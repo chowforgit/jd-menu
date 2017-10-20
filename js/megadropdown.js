@@ -63,9 +63,9 @@ $(document).ready(function() {
             $(document).unbind('mousemove', moveHandler);
         })
         // 鼠标移入菜单栏时，绑定事件代理
-        .on('mouseenter', 'li', function(e) {
+        .on('mouseenter', 'li', function() {
             if (!activeRow) {
-                activeRow = $(e.target).addClass('active');
+                activeRow = $(this).addClass('active');
                 // 绑定当前列表项ID相对应的二级菜单
                 activeMenu = $('#' + activeRow.data('id'));
                 activeMenu.removeClass('none');
@@ -99,7 +99,7 @@ $(document).ready(function() {
                     activeMenu.addClass('none');
 
                     // 指向当前的列表项
-                    activeRow = $(e.target);
+                    activeRow = $(this);
                     activeRow.addClass('active');
                     activeMenu = $('#' + activeRow.data('id'));
                     activeMenu.removeClass('none');
@@ -113,7 +113,7 @@ $(document).ready(function() {
                 var prevActiveMenu = activeMenu;
 
                 // 把当前的行块赋值给active…
-                activeRow = $(e.target);
+                activeRow = $(this);
                 activeMenu = $('#' + activeRow.data('id'));
 
                 // 把之前的行块隐藏
